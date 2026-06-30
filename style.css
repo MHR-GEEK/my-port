@@ -95,7 +95,7 @@ body.light .background {
 
 /* Optional tiny GIF (e.g., a sparkle) */
 .intro-gif {
-    width: 60px;
+    width: 160px;
     margin-bottom: 1rem;
     filter: drop-shadow(0 0 8px rgba(255,255,255,.5));
 }
