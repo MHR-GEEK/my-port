@@ -1,86 +1,169 @@
 /* ==============================================================
-   1️⃣ Global reset & box‑sizing
+   0️⃣ GLOBAL RESET & BASIC SETTINGS
    ============================================================== */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-}
-html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.5;
-    background: #fafafa;
-    color: #333;
 }
 
-/* ==============================================================
-   2️⃣ Layout containers
-   ============================================================== */
-.container {
-    width: 90%;               /* a little breathing room on phones   */
-    max-width: 1200px;        /* keep your desktop width if you like */
-    margin: 0 auto;          /* centre on larger screens            */
-    padding: 1rem 0;
-}
+/* Base font size – 1rem = 16px (easy to scale) */
+html { font-size: 100%; }
 
-/* Header / Footer styling – optional, keep or replace */
-.site-header,
-.site-footer {
-    background: #004466;
+/* -------------------------------------------------
+   BODY – flex column, centre content, dark fallback
+   ------------------------------------------------- */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #000;               /* dark fallback */
     color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+/* -------------------------------------------------
+   LIGHT‑MODE – just add class="light" to <body>
+   ------------------------------------------------- */
+body.light {
+    background: #f5f5f5;
+    color: #222;
+}
+
+/* ==============================================================
+   1️⃣ STATIC BACKGROUND – Batman rain GIF
+   ============================================================== */
+.background {
+    position: fixed;
+    inset: 0;
+    background: url('Images/batman-rain-gif-desktop-wallpaper.gif')
+                center / cover no-repeat;
+    /* Dark overlay for readability (keeps contrast in dark mode) */
+    background-color: rgba(0, 0, 0, .45);
+    background-blend-mode: multiply;
+    z-index: -1;
+}
+
+/* Light‑mode background – a lighter overlay */
+body.light .background {
+    background-color: rgba(255, 255, 255, .35);
+    background-blend-mode: overlay;
+}
+
+/* ==============================================================
+   2️⃣ TITLE
+   ============================================================== */
+.title {
+    margin-bottom: 2rem;
     text-align: center;
-    padding: 1rem;
+    z-index: 1;               /* above the background */
+}
+.title h1 {
+    font-weight: 700;
+    /* clamp() gives a fluid size that never gets too small or too big */
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    background: linear-gradient(90deg, #d4af37, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Light‑mode title – keep the gold gradient (still looks good) */
+body.light .title h1 {
+    background: linear-gradient(90deg, #b8860b, #ffb800);
 }
 
 /* ==============================================================
-   3️⃣ Images & GIFs – never overflow their container
+   3️⃣ GRID LAYOUT – mobile‑first
    ============================================================== */
-img,
-picture,
-video,
-svg,
-canvas {
-    max-width: 100%;
-    height: auto;
-    display: block;          /* removes bottom whitespace */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 900px;               /* caps width on large screens */
+    /* Mobile: 1 column, then auto‑fit for larger screens */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    z-index: 1;
 }
 
-/* Optional wrapper – useful if you want a border or caption */
-.gif-wrapper {
-    margin: 1.5rem auto;
-    text-align: center;
-}
-
-/* ==============================================================
-   4️⃣ Typography – base sizes that scale nicely
-   ============================================================== */
-h1 { font-size: 2.2rem; margin: 0.5rem 0; }
-h2 { font-size: 1.8rem; margin: 1rem 0 0.5rem; }
-p  { margin: 0.5rem 0; }
-
-/* ==============================================================
-   5️⃣ Responsive tweaks (media queries)
-   ============================================================== */
-
-/* Tablet & larger phones – collapse multi‑column layouts if any */
-@media (max-width: 768px) {
-    /* Example: if you used a flex row elsewhere */
-    .row {
-        flex-direction: column;
+/* Optional: force 2‑column on tablets if you prefer */
+@media (min-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 }
 
-/* Small phones – shrink headings a bit */
-@media (max-width: 480px) {
-    h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.5rem; }
+/* Optional: force 4‑column on wide desktops */
+@media (min-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 /* ==============================================================
-   6️⃣ Utility helpers (optional)
+   4️⃣ CARD – glass‑morphism (dark & light variants)
    ============================================================== */
-.text-center { text-align: center; }
-.mt-1 { margin-top: 1rem; }
+.card {
+    background: rgba(255,255,255,.07);   /* dark‑mode glass */
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;                     /* inherit body colour */
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(12px);
+    transition: transform .2s ease,
+                border-color .2s ease,
+                background .2s ease;
+}
+
+/* Light‑mode card – slightly lighter glass */
+body.light .card {
+    background: rgba(255,255,255,.45);
+    border: 1px solid rgba(0,0,0,.15);
+}
+
+/* Card heading */
+.card h2 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+/* Hover – lift + gold border (works in both themes) */
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #d4af37;
+}
+
+/* Light‑mode hover – keep gold border but darken background a tad */
+body.light .card:hover {
+    background: rgba(255,255,255,.55);
+}
+
+/* ==============================================================
+   5️⃣ RESPONSIVE TWEAKS (mobile specific)
+   ============================================================== */
+@media (max-width: 480px) {
+    .title { margin-bottom: 1.5rem; }
+    .card { padding: 1.5rem 1rem; }
+}
+
+/* ==============================================================
+   6️⃣ OPTIONAL DARK SCROLLBAR (keeps contrast in both modes)
+   ============================================================== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+/* Light‑mode scrollbar – lighter track */
+body.light ::-webkit-scrollbar-track { background: #e0e0e0; }
+body.light ::-webkit-scrollbar-thumb { background: #aaa; }
