@@ -36,7 +36,7 @@ body.light {
 .background {
     position: fixed;
     inset: 0;
-    background: url('Images/batman-rain-gif-desktop-wallpaper.gif')
+    background: url('Images/Backgroundclip.mp4')
                 center / cover no-repeat;
     background-color: rgba(0,0,0,.45);   /* dark overlay for contrast */
     background-blend-mode: multiply;
