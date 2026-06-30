@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- 👇 Mobile‑viewport meta tag – the single line that makes everything responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive GIF Demo</title>
+
+    <!-- Link to the stylesheet (same folder) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ---------- Header ---------- -->
+    <header class="site-header">
+        <h1>My Awesome Page</h1>
+    </header>
+
+    <!-- ---------- Main Content ---------- -->
+    <main class="container">
+        <section class="intro">
+            <p>
+                This page is fully responsive. The animated GIF below scales
+                down on phones but never loses its animation or gets cropped.
+            </p>
+        </section>
+
+        <!-- GIF wrapper – optional class, just for clarity -->
+        <figure class="gif-wrapper">
+            <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
+                 alt="Demo animated GIF">
+            <figcaption>Responsive animated GIF</figcaption>
+        </figure>
+
+        <section class="more-text">
+            <h2>Why responsive matters</h2>
+            <p>
+                On small screens the layout collapses to a single column,
+                text stays readable, and the image never overflows its container.
+            </p>
+        </section>
+    </main>
+
+    <!-- ---------- Footer ---------- -->
+    <footer class="site-footer">
+        <p>© 2026 My Site – All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
