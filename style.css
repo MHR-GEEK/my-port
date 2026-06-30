@@ -183,18 +183,30 @@ body {
 
 
 /* Spotify Player */
+/* Spotify Player */
 
 .spotify-wrapper {
-    max-width: 420px;      /* Change to 320px if you want it smaller */
-    margin: 20px auto;
+    position: absolute;
+
+    top: 58%;
+    left: 30%;
+
+    transform: translate(-50%, -50%);
+
+    width: 340px;
+    height: 80px;
+
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.45);
+
+    z-index: 999;
 }
 
 .spotify-wrapper iframe {
     width: 100%;
-    height: 80px;
+    height: 100%;
     border: none;
     display: block;
 }
