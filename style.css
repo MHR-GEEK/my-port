@@ -284,13 +284,17 @@ body.light .background {
 .card:active{
     transform:scale(.98);
 }
-/* Light‑mode card tweaks */
-body.light .card {
-    background: rgba(255,255,255,.45);
-    border: 1px solid rgba(0,0,0,.15);
+/* ----------------------------
+   Light Mode
+---------------------------- */
+
+body.light .card{
+    background:rgba(255,255,255,.35);
+    border:1px solid rgba(255,255,255,.55);
 }
-body.light .card:hover {
-    background: rgba(255,255,255,.55);
+
+body.light .card:hover{
+    background:rgba(255,255,255,.48);
 }
 
 /* -------------------------------------------------
