@@ -1,0 +1,86 @@
+/* ==============================================================
+   1️⃣ Global reset & box‑sizing
+   ============================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    background: #fafafa;
+    color: #333;
+}
+
+/* ==============================================================
+   2️⃣ Layout containers
+   ============================================================== */
+.container {
+    width: 90%;               /* a little breathing room on phones   */
+    max-width: 1200px;        /* keep your desktop width if you like */
+    margin: 0 auto;          /* centre on larger screens            */
+    padding: 1rem 0;
+}
+
+/* Header / Footer styling – optional, keep or replace */
+.site-header,
+.site-footer {
+    background: #004466;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* ==============================================================
+   3️⃣ Images & GIFs – never overflow their container
+   ============================================================== */
+img,
+picture,
+video,
+svg,
+canvas {
+    max-width: 100%;
+    height: auto;
+    display: block;          /* removes bottom whitespace */
+}
+
+/* Optional wrapper – useful if you want a border or caption */
+.gif-wrapper {
+    margin: 1.5rem auto;
+    text-align: center;
+}
+
+/* ==============================================================
+   4️⃣ Typography – base sizes that scale nicely
+   ============================================================== */
+h1 { font-size: 2.2rem; margin: 0.5rem 0; }
+h2 { font-size: 1.8rem; margin: 1rem 0 0.5rem; }
+p  { margin: 0.5rem 0; }
+
+/* ==============================================================
+   5️⃣ Responsive tweaks (media queries)
+   ============================================================== */
+
+/* Tablet & larger phones – collapse multi‑column layouts if any */
+@media (max-width: 768px) {
+    /* Example: if you used a flex row elsewhere */
+    .row {
+        flex-direction: column;
+    }
+}
+
+/* Small phones – shrink headings a bit */
+@media (max-width: 480px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+}
+
+/* ==============================================================
+   6️⃣ Utility helpers (optional)
+   ============================================================== */
+.text-center { text-align: center; }
+.mt-1 { margin-top: 1rem; }
