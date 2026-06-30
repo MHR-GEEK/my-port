@@ -24,11 +24,7 @@ body {
     transition: background .3s, color .3s;
 }
 
-/* Light‑mode palette */
-body.light {
-    background: #f5f5f5;
-    color: #222;
-}
+
 
 /* ==============================================================
    1️⃣ FULL‑SCREEN BACKGROUND GIF
@@ -43,11 +39,7 @@ body.light {
     z-index: -2;                         /* behind everything */
 }
 
-/* Light‑mode overlay */
-body.light .background {
-    background-color: rgba(255,255,255,.35);
-    background-blend-mode: overlay;
-}
+
 
 /* ==============================================================
    2️⃣ INTRO SCREEN – click anywhere to enter
@@ -187,14 +179,7 @@ body.light .background {
     border-color: #d4af37;               /* gold on hover */
 }
 
-/* Light‑mode card tweaks */
-body.light .card {
-    background: rgba(255,255,255,.45);
-    border: 1px solid rgba(0,0,0,.15);
-}
-body.light .card:hover {
-    background: rgba(255,255,255,.55);
-}
+
 
 /* -------------------------------------------------
    Spotify embed wrapper
