@@ -36,12 +36,11 @@ body.light {
 .background {
     position: fixed;
     inset: 0;
-    background: url('Images/batman-rain-gif-desktop-wallpaper.gif')
+    background: url('Images/ju5fzdcnykia1.gif')
                 center / cover no-repeat;
-    /* ---- updated ---- */
-    background-color: rgba(0,0,0,0.12);   /* very faint dim – lets the glass blur the real wallpaper */
+    /* ---- updated: very faint dim so the glass can blur the real wallpaper ---- */
+    background-color: rgba(0,0,0,0.12);
     background-blend-mode: normal;       /* removed multiply */
-    /* ----------------- */
     z-index: -2;                         /* behind everything */
 }
 
@@ -177,24 +176,25 @@ body.light .background {
     align-items: center;
 
     height: 110px;
+    padding: 0 1.2rem;               /* keep any internal spacing you already had */
 
     text-decoration: none;
     color: #fff;
     font-weight: 600;
     font-size: 1.15rem;
 
-    /* ---- glass appearance ---- */
-    border-radius: 26px;                                 /* 22‑28 px range */
-    background: rgba(255,255,255,0.04);                  /* 0.03‑0.06 opacity */
+    /* ---- 100 % transparent glass ---- */
+    background: transparent;                         /* 👈 fully see‑through */
     backdrop-filter: blur(35px) saturate(180%);
     -webkit-backdrop-filter: blur(35px) saturate(180%);
 
-    border: 1px solid rgba(255,255,255,0.18);           /* 0.15‑0.22 */
+    border-radius: 26px;                             /* 22‑28 px range */
+    border: 1px solid rgba(255,255,255,0.18);        /* thin white edge */
 
     /* soft inner highlight + subtle outer shadow */
     box-shadow:
-        inset 0 1px 2px rgba(255,255,255,0.12),          /* gentle inner glow */
-        0 12px 30px rgba(0,0,0,0.12);                     /* soft outer shadow */
+        inset 0 1px 2px rgba(255,255,255,0.12),       /* gentle inner glow */
+        0 12px 30px rgba(0,0,0,0.12);                /* soft outer shadow */
 
     transition:
         transform .35s ease,
@@ -203,7 +203,7 @@ body.light .background {
         box-shadow .35s ease;
 }
 
-/* glossy reflection – appears on top of the glass */
+/* glossy reflection – sits on top, does not block clicks */
 .card::before{
     content:"";
     position:absolute;
@@ -221,32 +221,33 @@ body.light .background {
     pointer-events:none;
 }
 
-/* hover – premium, smooth lift */
+/* hover – premium, smooth lift (still fully transparent) */
 .card:hover{
     transform:translateY(-5px);
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.26);
+    border:1px solid rgba(255,255,255,.28);
     box-shadow:
         inset 0 1px 2px rgba(255,255,255,0.18),
         0 18px 40px rgba(0,0,0,.20);
 }
 
 /* text inside the card – keep white for contrast */
-.card h2{
+.card h2,
+.card span,
+.card p {
     margin:0;
     color:#fff;
-    font-size:1.2rem;
 }
 
 /* ----------------------------
    Light Mode
    ---------------------------- */
 body.light .card{
-    background:rgba(255,255,255,0.12);          /* a touch brighter but still airy */
     border:1px solid rgba(255,255,255,0.30);
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,0.18),
+        0 12px 30px rgba(0,0,0,0.10);
 }
 body.light .card:hover{
-    background:rgba(255,255,255,0.18);
     border:1px solid rgba(255,255,255,0.38);
 }
 
